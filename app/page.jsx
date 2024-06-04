@@ -13,7 +13,11 @@ const Home = () => {
                 quest-for-quotes is platform to share quotes / dialogue from novels
                 that spoke to you meaningfully
             </p>
+            
+            <Feed />
         </section>
+
+        
     )
 }
 
