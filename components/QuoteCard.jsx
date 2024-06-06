@@ -10,9 +10,10 @@ const QuoteCard = ({ post, handleTagClick, handleEdit, handleDelete }) => {
 
     const [copied, setCopied] = useState("");
     const handleCopy = () => {
+        console.log("copied");
         setCopied(post.quote);
         navigator.clipboard.writeText(post.quote);
-        setTimeout(() => setCopied("", 3000))
+        setTimeout(() => setCopied(""), 3000);
     }
 
 
@@ -34,11 +35,11 @@ const QuoteCard = ({ post, handleTagClick, handleEdit, handleDelete }) => {
                     </div>
                 </div>
 
-                <div className="copy_btn" onClick={() => handleCopy}>
+                <div className="copy_btn" onClick={handleCopy}>
                     <img src={copied === post.quote
-                            ? '/assets/icons/tick.svg'
-                            : '/assets/icons/copy.svg'
-                      }
+                           ? '/assets/icons/tick.svg'
+                           : '/assets/icons/copy.svg'
+                        }
                       width={12}
                       height={12}
                     />
