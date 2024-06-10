@@ -8,6 +8,11 @@ import { usePathname, useRouter } from 'next/navigation';
 
 const QuoteCard = ({ post, handleTagClick, handleEdit, handleDelete }) => {
 
+
+    const { data: session } = useSession();
+    const pathName = usePathname();
+    const router = useRouter();
+
     const [copied, setCopied] = useState("");
     const handleCopy = () => {
         console.log("copied");
@@ -51,6 +56,17 @@ const QuoteCard = ({ post, handleTagClick, handleEdit, handleDelete }) => {
                onClick={() => handleTagClick && handleTagClick}>
                 {post.source}
             </p>
+
+            {session?.user.id === post.creator._id && pathName === '/profile' && (
+                <div className="mt-5 flex-center gap-4 border-t border-black-100 pt-3">
+                    <p className="font-inter text-sm green_gradient cursor-pointer" onClick={handleEdit}>
+                        edit
+                    </p>
+                    <p className="font-inter text-sm orange_gradient cursor-pointer" onClick={handleDelete}>
+                        delete
+                    </p>
+                </div>
+            )}
         </div>
     )
 }
